@@ -23,19 +23,29 @@ words = ['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine']
 website = input("Enter website URL: ")
 pin = int(input("Enter PIN: "))
 
+
 #attempt 1
 if pin == password_pin:
     with open('passwords.txt', 'r') as f:
         print("\nTime of request:",current_time)
-        print("Passwords:\n")
+        # print("Passwords:\n")
         noSquareBrackets = f.readlines()
-        printt = "".join(noSquareBrackets)
-        print(printt)
+        count = 0
+        length = len(noSquareBrackets)
+        for i in noSquareBrackets:
+            colon = i.find(":")
+            webfinder = i[:colon-1]
+            count+=1
+            if website == webfinder:
+                print(i)
+            elif count == length:
+                print("Password not found")
         sys.exit()
            
 else:
     counter +=1
-    print(f"\n{words[attempts-counter]} more attempts before all passwords are erased from memory")
+    print("Wrong pin entered")
+    print(f"\n{words[attempts-counter]} more attempt(s) before all passwords are erased from memory")
     website = input("Enter website URL: ")
     pin = int(input("Enter PIN: "))
     
@@ -43,15 +53,23 @@ else:
 if pin == password_pin:
     with open('passwords.txt', 'r') as f:
         print("\nTime of request:",current_time)
-        print("Passwords:\n")
+        # print("Passwords:\n")
         noSquareBrackets = f.readlines()
-        printt = "".join(noSquareBrackets)
-        print(printt)
+        count = 0
+        length = len(noSquareBrackets)
+        for i in noSquareBrackets:
+            colon = i.find(":")
+            webfinder = i[:colon-1]
+            count+=1
+            if website == webfinder:
+                print(i)
+            elif count == length:
+                print("Password not found")
         sys.exit()
            
 else:
     counter +=1
-    print(f"\n{words[attempts-counter]} more attempts before all passwords are erased from memory")
+    print(f"\n{words[attempts-counter]} more attempt(s) before all passwords are erased from memory")
     website = input("Enter website URL: ")
     pin = int(input("Enter PIN: "))
     
@@ -59,43 +77,49 @@ else:
 if pin == password_pin:
     with open('passwords.txt', 'r') as f:
         print("\nTime of request:",current_time)
-        print("Passwords:\n")
+        # print("Passwords:\n")
         noSquareBrackets = f.readlines()
-        printt = "".join(noSquareBrackets)
-        print(printt)
+        count = 0
+        length = len(noSquareBrackets)
+        for i in noSquareBrackets:
+            colon = i.find(":")
+            webfinder = i[:colon-1]
+            count+=1
+            if website == webfinder:
+                print(i)
+            elif count == length:
+                print("Password not found")
         sys.exit()
            
 else:
     print('\nAll attempts have been used up')
     recipient_email = input("Enter EMAIL account to send recovery PIN: ")
-    sender_email = "stuffinternet12@gmail.com"
+    sender_email = "MDXSecurityServices@company.com"
     #For email to be sent, enable 2 step verification the generate "app passwords" and use it as password for email with pyhton script. Browse "Google App passwords" for more info.
     sender_password = os.environ.get("sender_password")
     subject = "Acknowledgement of Terms and Conditions - MDX Security Services"
     body = f'''
+Dear valued customer,
 
-    Dear valued customer,
-
-    We hope this email finds you well. We are writing to formally acknowledge your agreement to the terms and conditions governing the use of MDX Security's services, including our
-    password management system. As of {current_time}, you have accessed or utilized our services, indicating your acceptance and agreement to comply with the following terms and conditions:
+We hope this email finds you well. We are writing to formally acknowledge your agreement to the terms and conditions governing the use of MDX Security's services, including our password management system. As of {current_time}, you have accessed or utilized our services, indicating your acceptance and agreement to comply with the following terms and conditions:
     
-    These terms and conditions, in conjunction with our commitment to excellence since 28 March 2024, regulate your use of our services. By utilizing our services, you agree to comply with 
-    these terms fully. You are solely responsible for maintaining the confidentiality of your PIN and any other authentication credentials.
+These terms and conditions, in conjunction with our commitment to excellence since 28 March 2024, regulate your use of our services. By utilizing our services, you agree to comply with these terms fully. You are solely responsible for maintaining the confidentiality of your PIN and any other authentication credentials.
     
-    Incorrect entry of the PIN may lead to the loss of access to stored passwords. Our services are for personal and non-commercial use only. Sharing of your PIN or authentication credentials
-    with third parties is strictly prohibited. We prioritize the protection of your personal information and ensure its security through encryption.
+Incorrect entry of the PIN may lead to the loss of access to stored passwords. Our services are for personal and non-commercial use only. Sharing of your PIN or authentication credentials with third parties is strictly prohibited. We prioritize the protection of your personal information and ensure its security through encryption.
     
-    MDX Security shall not be liable for any loss or damage resulting from your failure to comply with these terms and conditions. We reserve the right to amend these terms and conditions at
-    any time. Your continued use of our services implies acceptance of any revised terms.
+MDX Security shall not be liable for any loss or damage resulting from your failure to comply with these terms and conditions. We reserve the right to amend these terms and conditions at any time. Your continued use of our services implies acceptance of any revised terms.
 
-    For any questions or concerns regarding these terms and conditions, please contact us at https://github.com/Thompho-Madia
-    Please be aware that by using our services, you are bound by these terms and conditions. Should you have any queries or require further clarification, do not hesitate to reach out to us.
+For any questions or concerns regarding these terms and conditions, please contact us at https://github.com/Thompho-Madia
 
-    Kindly note that this is an automated email and replies to this email address will not be monitored. If you need assistance, please contact us through the provided contact information.
-    Thank you for choosing MDX Security. We look forward to serving you with excellence. The pin in the photo is incorrect the Password is: PaSword123
+Please be aware that by using our services, you are bound by these terms and conditions. Should you have any queries or require further clarification, do not hesitate to reach out to us.
 
-    Best regards,
-    MDX Security Team
+Kindly note that this is an automated email and replies to this email address will not be monitored. If you need assistance, please contact us through the provided contact information.
+
+Thank you for choosing MDX Security. We look forward to serving you with excellence. The pin in the photo is incorrect, the correct Password is: 
+PaSword123
+
+Best regards,
+MDX Security Team
     '''
     
     #open the image, write the name of the file. Image must be a jpeg
